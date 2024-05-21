@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import seaborn as sns
+import altair as alt
 import matplotlib.pyplot as plt
 from sklearn import *
 from prophet import Prophet
@@ -38,14 +38,16 @@ def oil_price_analysis(data):
     # Descriptive statistics
     print(data.describe())
 
-    # Line plot of oil prices
-    plt.figure(figsize=(10, 6))
-    data["preco"].plot()
-    plt.title("Preços do Petróleo")
-    plt.xlabel("Data")
-    plt.ylabel("Preço")
-    plt.grid(True)
-    plt.show()
+     # Line plot with Altair
+    alt.Chart(data).mark_line().encode(
+      x=alt.X('data:D', title='Data'),
+      y=alt.Y('preco:Q', title='Preço do Petróleo'),
+      tooltip=[alt.Tooltip('data:D', title='Data'), alt.Tooltip('preco:Q', title='Preço')]
+    ).properties(
+      width=800,
+      height=400,
+      title='Preços do Petróleo'
+    ).interactive().display()
 
 def avaliar_previsao(df, a, b, c, metric='mape'):
     """
