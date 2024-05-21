@@ -50,7 +50,8 @@ def oil_price_analysis(data):
     plt.show()
 
 
-def avaliar_previsao(df, a, b, c, metric='mape'):
+def evaluate_forecast(df, a, b, c, metric='mape'):
+    
     """
     Função para avaliar a previsão de séries temporais usando Prophet e validação cruzada.
 
