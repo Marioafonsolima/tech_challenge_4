@@ -1,6 +1,9 @@
+pip install pandas numpy altair prophet streamlit
+
 import pandas as pd
 import numpy as np
 import altair as alt
+import matplotlib.pyplot as plt
 from sklearn import *
 from prophet import Prophet
 from prophet.diagnostics import cross_validation, performance_metrics
